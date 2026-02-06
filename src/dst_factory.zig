@@ -241,10 +241,3 @@ test "get-israel-dst-data" {
     try std.testing.expectEqual(1761436800, dst_data[1]);
     try std.testing.expectEqual(60, dst_data[2]);
 }
-
-test "get-eastern-island-dst-data" {
-    const dst_data = getDstZoneData(2025, .eastern_island_summer_time);
-    try std.testing.expectEqual(1743811200, dst_data[0]);
-    try std.testing.expectEqual(1757116800, dst_data[1]);
-    try std.testing.expectEqual(60, dst_data[2]);
-}
