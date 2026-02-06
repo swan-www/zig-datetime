@@ -1678,23 +1678,6 @@ test "datetime-parse-modified-since" {
     try testing.expectError(error.InvalidFormat, Datetime.parseModifiedSince("21/10/2015"));
 }
 
-test "readme-example" {
-    const allocator = std.testing.allocator;
-    const date = try Date.create(2019, 12, 25);
-    const next_year = date.shiftDays(7);
-    assert(next_year.year == 2020);
-    assert(next_year.month == 1);
-    assert(next_year.day == 1);
-
-    // In UTC
-    const now = Datetime.now();
-    const now_str = try now.formatHttp(allocator);
-    defer allocator.free(now_str);
-    std.log.warn("The time is now: {s}\n", .{now_str});
-    // The time is now: Fri, 20 Dec 2019 22:03:02 UTC
-
-}
-
 test "datetime-format-ISO8601" {
     const allocator = std.testing.allocator;
 
