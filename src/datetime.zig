@@ -1678,14 +1678,6 @@ test "datetime-parse-modified-since" {
     try testing.expectError(error.InvalidFormat, Datetime.parseModifiedSince("21/10/2015"));
 }
 
-test "file-modified-date" {
-    var f = try std.fs.cwd().openFile("README.md", .{});
-    const stat = try f.stat();
-    var buf: [32]u8 = undefined;
-    const str = try Datetime.formatHttpFromModifiedDate(&buf, stat.mtime);
-    std.log.warn("Modtime: {s}\n", .{str});
-}
-
 test "readme-example" {
     const allocator = std.testing.allocator;
     const date = try Date.create(2019, 12, 25);
